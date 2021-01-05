@@ -75,7 +75,7 @@ class Header extends React.Component {
       <nav className="navbar navbar-light">
         <div className="container">
 
-          <Link to="/" className="navbar-brand">
+          <Link to="/" className="navbar-brand" data-testid={`TEST_HOME_BTN`}>
             {this.props.appName.toLowerCase()}
           </Link>
 

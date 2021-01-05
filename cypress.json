@@ -16,6 +16,7 @@
   "pageLoadTimeout": 120000,
   "requestTimeout": 10000,
   "responseTimeout": 60000,
+  "projectId": "cypress_demo",
   "env": {
     "apiUrl": "https://conduit.productionready.io/api",
     "user": {
