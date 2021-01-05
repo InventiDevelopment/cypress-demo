@@ -5,6 +5,11 @@
   "devDependencies": {
     "cross-env": "^5.1.4",
     "cypress": "^6.2.1",
+    "cypress-multi-reporters": "^1.4.0",
+    "mocha": "^8.2.1",
+    "mochawesome": "^6.2.1",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.1.0",
     "react-scripts": "1.1.1",
     "start-server-and-test": "^1.11.7"
   },
@@ -30,7 +35,10 @@
     "unittest": "cross-env PORT=4100 react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
-    "cy:run": "cypress run",
-    "test": "start-server-and-test start http://localhost:4100 cy:run"
+    "cy:run": "node cypress_runner -b chrome -m headless  -s 'cypress/integration/**.spec.js'",
+    "cy:verify": "cypress verify",
+    "cy:info": "cypress info",
+    "cy:version": "cypress version",
+    "test:ci": "start-server-and-test start http://localhost:4100 cy:run"
   }
 }
