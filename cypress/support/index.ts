@@ -16,5 +16,6 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
+Cypress.Commands.add('dataCy', (value) => {
+    return cy.get(`[data-cy=${value}]`)
+  })
