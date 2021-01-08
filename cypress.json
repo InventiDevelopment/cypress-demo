@@ -1,5 +1,13 @@
 {
     "baseUrl": "http://localhost:4100",
+    "env": {
+      "apiUrl": "http://localhost:3000",
+      "user": {
+        "email": "tester@test.com",
+        "password": "password1234",
+        "username": "testuser"
+      }
+    },
     "video": false,
     "videoCompression": false,
     "videoUploadOnPasses": false,
@@ -16,9 +24,6 @@
     "pageLoadTimeout": 120000,
     "requestTimeout" : 10000,
     "responseTimeout" : 60000,
-    "env": {
-     
-    },
     "viewportWidth": 1600,
     "viewportHeight": 1200,
     "retries": {

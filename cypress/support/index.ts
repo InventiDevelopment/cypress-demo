@@ -16,6 +16,29 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
+const apiUrl = Cypress.env('apiUrl')
+
 Cypress.Commands.add('dataCy', (value) => {
     return cy.get(`[data-cy=${value}]`)
   })
+
+// creates a user with email and password
+// defined in cypress.json environment variables
+// if the user already exists, ignores the error
+// or given user info parameters
+Cypress.Commands.add('registerUserIfNeeded', (options = {}) => {
+  const defaults = {
+    image: 'https://robohash.org/6FJ.png?set=set3&size=150x150',
+    // email, password
+    ...Cypress.env('user')
+  }
+  const user = Cypress._.defaults({}, options, defaults)
+  cy.request({
+    method: 'POST',
+    url: `${apiUrl}/api/users`,
+    body: {
+      user
+    },
+    failOnStatusCode: false
+  })
+})

@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "@types/node": "^14.14.20",
     "cross-env": "^5.1.4",
     "cypress": "^6.2.1",
     "cypress-multi-reporters": "^1.4.0",
+    "knex": "^0.21.15",
     "mocha": "^8.2.1",
     "mochawesome": "^6.2.1",
     "mochawesome-merge": "^4.2.0",

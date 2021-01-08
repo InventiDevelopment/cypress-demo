@@ -8,5 +8,6 @@ declare namespace Cypress {
        * @example cy.dataCy('greeting')
       */
       dataCy(value: string): Chainable<Element>
+      registerUserIfNeeded(options?: {}): void 
     }
   }
