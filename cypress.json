@@ -1,29 +1,33 @@
 {
-    "baseUrl": "http://localhost:4100",
-    "video": false,
-    "videoCompression": false,
-    "videoUploadOnPasses": false,
-    "reporter": "cypress-multi-reporters",
-    "reporterOptions": {
-      "configFile": "reporterOpts.json"
-    },
-    "screenshotsFolder": "mochawesome-report/assets/screenshots/",
-    "fixturesFolder": "cypress/fixtures",
-    "integrationFolder": "cypress/integration",
-    "pluginsFile": "cypress/plugins/index.js",
-    "supportFile": "cypress/support/index.ts",
-    "defaultCommandTimeout": 30000,
-    "pageLoadTimeout": 120000,
-    "requestTimeout" : 10000,
-    "responseTimeout" : 60000,
-    "env": {
-     
-    },
-    "viewportWidth": 1600,
-    "viewportHeight": 1200,
-    "retries": {
-      "runMode": 0,
-      "openMode": 0
+  "baseUrl": "http://localhost:4100",
+  "video": false,
+  "videoCompression": false,
+  "videoUploadOnPasses": false,
+  "reporter": "cypress-multi-reporters",
+  "reporterOptions": {
+    "configFile": "reporterOpts.json"
+  },
+  "screenshotsFolder": "mochawesome-report/assets/screenshots/",
+  "fixturesFolder": "cypress/fixtures",
+  "integrationFolder": "cypress/integration",
+  "pluginsFile": "cypress/plugins/index.js",
+  "supportFile": "cypress/support/index.ts",
+  "defaultCommandTimeout": 30000,
+  "pageLoadTimeout": 120000,
+  "requestTimeout": 10000,
+  "responseTimeout": 60000,
+  "env": {
+    "apiUrl": "https://conduit.productionready.io",
+    "user": {
+      "email": "ferrro@gmail.com",
+      "password": "ferrro111",
+      "username": "ferrro"
     }
-   
+  },
+  "viewportWidth": 1600,
+  "viewportHeight": 1200,
+  "retries": {
+    "runMode": 0,
+    "openMode": 0
   }
+}
