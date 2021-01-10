@@ -44,11 +44,13 @@ install:
     # - npm run start:ci &
     # run Cypress test in load balancing mode
     - npm run test:ci
+    - npx nyc report --reporter=text-summary
   artifacts:
     when: always
     paths:
+      - coverage
       - mochawesome-report
-    expire_in: 1 day
+    expire_in: 10 day
 
 # actual job definitions
 # all steps are the same, they come from the template above
