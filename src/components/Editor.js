@@ -109,7 +109,9 @@ class Editor extends React.Component {
                       type="text"
                       placeholder="Article Title"
                       value={this.props.title}
-                      onChange={this.changeTitle} />
+                      onChange={this.changeTitle}
+                      data-testid={`TEST_ARTICLE_TITLE`}
+                    />
                   </fieldset>
 
                   <fieldset className="form-group">
@@ -118,7 +120,9 @@ class Editor extends React.Component {
                       type="text"
                       placeholder="What's this article about?"
                       value={this.props.description}
-                      onChange={this.changeDescription} />
+                      onChange={this.changeDescription}
+                      data-testid={`TEST_ARTICLE_DESC`}
+                    />
                   </fieldset>
 
                   <fieldset className="form-group">
@@ -127,7 +131,9 @@ class Editor extends React.Component {
                       rows="8"
                       placeholder="Write your article (in markdown)"
                       value={this.props.body}
-                      onChange={this.changeBody}>
+                      onChange={this.changeBody}
+                      data-testid={`TEST_ARTICLE_BODY`}
+                    >
                     </textarea>
                   </fieldset>
 
@@ -138,7 +144,9 @@ class Editor extends React.Component {
                       placeholder="Enter tags"
                       value={this.props.tagInput}
                       onChange={this.changeTagInput}
-                      onKeyUp={this.watchForEnter} />
+                      onKeyUp={this.watchForEnter}
+                      data-testid={`TEST_ARTICLE_TAG`}
+                    />
 
                     <div className="tag-list">
                       {
@@ -160,6 +168,7 @@ class Editor extends React.Component {
                     className="btn btn-lg pull-xs-right btn-primary"
                     type="button"
                     disabled={this.props.inProgress}
+                    data-testid={`TEST_PUBLISH_ARTICLE`}
                     onClick={this.submitForm}>
                     Publish Article
                   </button>
