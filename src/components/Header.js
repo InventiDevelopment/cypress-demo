@@ -13,13 +13,13 @@ const LoggedOutView = props => {
         </li>
 
         <li className="nav-item">
-          <Link to="/login" className="nav-link">
+          <Link to="/login" className="nav-link" data-testid={`TEST_LOG_IN_BTN`}>
             Sign in
           </Link>
         </li>
 
         <li className="nav-item">
-          <Link to="/register" className="nav-link">
+          <Link to="/register" className="nav-link" data-testid={`TEST_SIGN_UP_BTN`}>
             Sign up
           </Link>
         </li>
@@ -56,7 +56,9 @@ const LoggedInView = props => {
         <li className="nav-item">
           <Link
             to={`/@${props.currentUser.username}`}
-            className="nav-link">
+            className="nav-link"
+            data-testid={`TEST_${props.currentUser.username}`}
+          >
             <img src={props.currentUser.image} className="user-pic" alt={props.currentUser.username} />
             {props.currentUser.username}
           </Link>
