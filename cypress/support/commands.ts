@@ -1,4 +1,5 @@
-// import "@testing-library/cypress/add-commands";
+import '@testing-library/cypress/add-commands';
+
 const apiUrl = Cypress.env('apiUrl')
 
 declare global {
@@ -85,7 +86,6 @@ const defaultGreeting: Cypress.Greeting = {
     greeting: 'hi',
     name: 'there'
 }
-
 /**
  * Prints a custom greeting.
  * @example printToConsole({ greeting: 'hello', name: 'world' })
