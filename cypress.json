@@ -9,7 +9,7 @@
   },
   "screenshotsFolder": "mochawesome-report/assets/screenshots/",
   "fixturesFolder": "cypress/fixtures",
-  "integrationFolder": "cypress/integration",
+  "integrationFolder": "cypress/tests",
   "pluginsFile": "cypress/plugins/index.js",
   "supportFile": "cypress/support/index.ts",
   "defaultCommandTimeout": 30000,

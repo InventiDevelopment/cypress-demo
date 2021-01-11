@@ -1,8 +1,7 @@
-/// <reference path="../support/index.d.ts" />
 
-import {editor} from "../support/pages/editor.page";
-import {yourFeed} from "../support/pages/your.feed.page";
-import {randomString} from "../support/helpers";
+import {editor} from "../../support/pages/editor.page";
+import {yourFeed} from "../../support/pages/your.feed.page";
+import {randomString} from "../../support/helpers";
 
 describe('My First Test', () => {
   beforeEach(() => {
@@ -18,7 +17,6 @@ describe('My First Test', () => {
     editor.fillArticleBody('this post is **important**.')
     editor.fillArticleTag('**important**')
     editor.addArticle();
-
     // cy.location('pathname').should('equal', '/article/my-title')
   })
 })
