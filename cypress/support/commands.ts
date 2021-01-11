@@ -121,7 +121,7 @@ Cypress.Commands.add('login', (user = Cypress.env('user')) => {
 // useful to perform authorized API calls
 Cypress.Commands.add('getLoginToken', (user = Cypress.env('user')) => {
     return cy
-        .request('POST', `${apiUrl}/api/users/login`, {
+        .request('POST', `${apiUrl}/users/login`, {
             user: Cypress._.pick(user, ['email', 'password'])
         })
         .its('body.user.token')
@@ -141,7 +141,7 @@ Cypress.Commands.add('registerUserIfNeeded', (options = {}) => {
     const user = Cypress._.defaults({}, options, defaults)
     cy.request({
         method: 'POST',
-        url: `${apiUrl}/api/users`,
+        url: `${apiUrl}/users`,
         body: {
             user
         },
