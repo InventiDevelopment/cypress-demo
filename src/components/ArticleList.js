@@ -5,13 +5,13 @@ import React from 'react';
 const ArticleList = props => {
   if (!props.articles) {
     return (
-      <div className="article-preview">Loading...</div>
+      <div className="article-preview" data-testid="TEST_ARTICLE_PREVIEW">Loading...</div>
     );
   }
 
   if (props.articles.length === 0) {
     return (
-      <div className="article-preview">
+      <div className="article-preview" data-testid="TEST_ARTICLE_PREVIEW">
         No articles are here... yet.
       </div>
     );

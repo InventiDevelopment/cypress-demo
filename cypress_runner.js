@@ -17,13 +17,17 @@ const argv = yargs
     spec: {
       alias: 's',
       describe: 'run test with specific spec file',
-      default: 'cypress/smoke/',
+      default: 'cypress/tests/',
     },
     mode: {
       alias: 'm',
       describe: 'run test in headless or headed mode',
       default: 'headless',
       choices: ['headless', 'headed'],
+    },
+    config: {
+      alias: 'config',
+      describe: 'run test with different configuration',
     },
     env: {
       alias: 'e',
@@ -46,6 +50,7 @@ cypress
     spec: argv.spec,
     headed: argv.mode === 'headed',
     headless: argv.mode === 'headless',
+    config: argv.config,
     env: argv.env,
   })
   .then(async (testResult) => {
