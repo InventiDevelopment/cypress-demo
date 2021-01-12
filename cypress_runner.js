@@ -64,7 +64,7 @@ cypress
     );
     console.log('Merged report available here:-', generatedReport);
     console.log(testResult.totalFailed);
-
+    process.exit(testResult.totalFailed);
     
 
     // const BUCKET_NAME = `drivvn-${map.get('BRAND').toLowerCase()}-${map

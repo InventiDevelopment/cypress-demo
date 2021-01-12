@@ -42,13 +42,15 @@
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
     "cy:run": "node cypress_runner -b chrome -m headless  -s 'cypress/tests/**/*.spec.ts'",
-    "cy:run:mobile": "node cypress_runner -b chrome -m headed --config viewportWidth=375,viewportHeight=667 -s 'cypress/tests/**/*.spec.ts'",
+    "cy:run:mobile": "node cypress_runner -b chrome -m headless --config viewportWidth=375,viewportHeight=667 -s 'cypress/tests/**/*.spec.ts'",
+    "cy:run:firefox": "node cypress_runner -b firefox -m headless -s 'cypress/tests/**/*.spec.ts'",
     "cy:parallel:run": "cypress run --record --key cypress_demo --parallel --ci-build-id $CI_CONCURRENT_ID",
     "cy:verify": "cypress verify",
     "cy:info": "cypress info",
     "cy:version": "cypress version",
     "test:ci": "start-server-and-test start http://localhost:4100 cy:run",
-    "test:ci:mobile": "start-server-and-test start http://localhost:4100 cy:run:mobile"
+    "test:ci:mobile": "start-server-and-test start http://localhost:4100 cy:run:mobile",
+    "test:ci:firefox": "start-server-and-test start http://localhost:4100 cy:run:firefox"
   },
   "browserslist": {
     "production": [

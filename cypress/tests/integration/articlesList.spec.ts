@@ -10,7 +10,7 @@ describe('Integration tests - check that articles are loaded correctly from fixt
   //AND I land to the base page with articles 
   //WHEN my app gets only x articles from server
   //THEN I can see only x articles on the page
-  it('checks count of articles vs fixure file', () => {
+  it('[CD-T7] - checks count of articles vs fixure file', () => {
     cy.intercept('GET', articlesApi, {
         fixture: 'articleList'
       })
@@ -22,7 +22,7 @@ describe('Integration tests - check that articles are loaded correctly from fixt
   //AND I land to the base page with articles 
   //WHEN my app gets no articles from server
   //THEN I can see the special text on the page
-  it('checks page with no articles', () => {
+  it('[CD-T8] - checks page with no articles', () => {
     cy.intercept('GET', articlesApi, {
         fixture: 'emptyArticleList'
       })
