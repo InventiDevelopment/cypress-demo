@@ -24,7 +24,7 @@ install:
   stage: build
 
   script:
-    - npm ci
+    - npm i
     # check Cypress binary path and cached version
     # useful to make sure we are not carrying around old versions
     - npx cypress cache path
@@ -34,14 +34,11 @@ install:
     - npm run cy:info
 
 # all jobs that actually run tests can use the same definition
-.job_template:
+.job_template1:
   image: cypress/browsers:node14.15.0-chrome86-ff82
   stage: test
   script:
-    # print CI environment variables for reference
-    #- $(npm bin)/print-env CI
-    # start the server in the background
-    # - npm run start:ci &
+    - npm i
     # run Cypress test in load balancing mode
     - npm run test:ci
     - npx nyc report --reporter=text-summary
@@ -52,14 +49,44 @@ install:
       - mochawesome-report
     expire_in: 10 day
 
+.job_template2:
+  image: cypress/browsers:node14.15.0-chrome86-ff82
+  stage: test
+  script:
+    - npm i
+    # run Cypress test in load balancing mode
+    - npm run test:ci:mobile
+    - npx nyc report --reporter=text-summary
+  artifacts:
+    when: always
+    paths:
+      - coverage
+      - mochawesome-report
+    expire_in: 10 day
+  
+.job_template3:
+  image: cypress/browsers:node14.15.0-chrome86-ff82
+  stage: test
+  script:
+    - npm i
+    # run Cypress test in load balancing mode
+    - npm run test:ci:firefox
+    - npx nyc report --reporter=text-summary
+  artifacts:
+    when: always
+    paths:
+      - coverage
+      - mochawesome-report
+    expire_in: 10 day
+
 # actual job definitions
 # all steps are the same, they come from the template above
-chrome-1:
-  extends: .job_template
-#chrome-2:
-#  extends: .job_template
-#chrome-3:
-#  extends: .job_template
+chrome-desktop:
+  extends: .job_template1
+chrome-mobile:
+ extends:  .job_template2
+firefox-desktop:
+ extends:  .job_template3
 #chrome-4:
 #  extends: .job_template
 #chrome-5:
