@@ -17,6 +17,5 @@ describe('My First Test', () => {
     editor.fillArticleBody('this post is **important**.')
     editor.fillArticleTag('**important**')
     editor.addArticle();
-    // cy.location('pathname').should('equal', '/article/my-title')
   })
 })

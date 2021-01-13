@@ -20,9 +20,3 @@ import '@testing-library/cypress/add-commands';
 import {configure} from '@testing-library/cypress'
 import {randomString} from "./helpers";
 configure({testIdAttribute: 'data-testid'})
-
-before(() => {
-    cy.log('Test Suite Started')
-        const token ='sefasefsaf'
-        cy.exec(`export CI_TOKEN=${token}`)
-})
