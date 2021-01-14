@@ -52,7 +52,7 @@ You can download HTML report including videos of failed tests from jobs artifact
 In our repo we have predefined configuration for [sorry-cypress dashboard](https://sorry-cypress.dev/) which is a very interesting plugin in cypress community for live monitoring of executed test suites.
 
 ![Alt text](img/sorry.png?raw=true "Cypress dashboard")
-![Alt text](img/sory2.png?raw=true "Cypress dashboard")
+![Alt text](img/sorry2.png?raw=true "Cypress dashboard")
 
 ## Code Coverage
 
