@@ -2,11 +2,11 @@
 /// <reference types="cypress" />
 
 declare namespace Cypress {
-    interface Chainable {
-      /**
-       * Custom command to select DOM element by data-cy attribute.
-       * @example cy.dataCy('greeting')
-      */
-      dataCy(value: string): Chainable<Element>
-    }
+  interface Chainable {
+    getLoginToken(user: string): Chainable<void>;
+    login(): Chainable<void>;
+    registerUserIfNeeded(): Chainable<void>;
+    getByDataId(dataId: string): Chainable;
+    containsDataId(dataId: string): Chainable;
   }
+}

@@ -1,8 +1,8 @@
 
-import {articles} from "../../support/pages/articleList.page";
-import {endpoints} from "../../support/constants/endpoints"
+import {Feed} from "../../support/pageObjects/feed";
+import {Endpoints} from "../../support/constants/endpoints"
 
-const articlesApi = endpoints.articlesApi;
+const articlesApi = Endpoints.ARTICLES_API;
 
 describe('Integration tests - check that articles are loaded correctly from fixture', () => {
 
@@ -15,7 +15,7 @@ describe('Integration tests - check that articles are loaded correctly from fixt
         fixture: 'articleList'
       })
     cy.visit('/')
-    articles.getAllArticles().should('have.length', 10)
+    Feed.getAllArticles().should('have.length', 10)
   })
 
   //GIVEN I am a not logged user 
@@ -27,7 +27,7 @@ describe('Integration tests - check that articles are loaded correctly from fixt
         fixture: 'emptyArticleList'
       })
     cy.visit('/')
-    articles.getAllArticles().should('have.length', 1)
-    articles.getAllArticles().eq(0).should('contain','No articles are here')
+    Feed.getAllArticles().should('have.length', 1)
+    Feed.getAllArticles().eq(0).should('contain','No articles are here')
   })
 })
