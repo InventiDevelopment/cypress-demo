@@ -14,9 +14,49 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
 import '@cypress/code-coverage/support'
 import '@testing-library/cypress/add-commands';
+
 import {configure} from '@testing-library/cypress'
-import {randomString} from "./helpers";
 configure({testIdAttribute: 'data-testid'})
+
+const apiUrl = Cypress.env('apiUrl');
+
+Cypress.Commands.add('containsDataId', (containsDataId) => {
+  return cy.get(`[data-testid^='${containsDataId}']`);
+});
+
+Cypress.Commands.add('login', (user = Cypress.env('user')) => {
+  getLoginToken(user).then((token) => {
+    localStorage.setItem('jwt', token);
+  });
+
+  cy.visit('/');
+  cy.findAllByTestId('TEST_GLOBAL_FEED').should('be.visible');
+});
+
+export function getLoginToken(user = Cypress.env('user')) {
+  return cy
+    .request('POST', `${apiUrl}/users/login`, {
+      user: Cypress._.pick(user, ['email', 'password']),
+    })
+    .its('body.user.token')
+    .should('exist');
+}
+
+Cypress.Commands.add('registerUserIfNeeded', (options = {}) => {
+  const defaults = {
+    image: 'https://robohash.org/6FJ.png?set=set3&size=150x150',
+    // email, password
+    ...Cypress.env('user'),
+  };
+  const user = Cypress._.defaults({}, options, defaults);
+  cy.request({
+    method: 'POST',
+    url: `${apiUrl}/api/users`,
+    body: {
+      user,
+    },
+    failOnStatusCode: false,
+  });
+});
