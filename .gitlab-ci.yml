@@ -2,6 +2,7 @@
 stages:
   - build
   - test
+  - deploy
 
 # to cache both npm modules and Cypress binary we use environment variables
 # to point at the folders we can list as paths in "cache" job settings
@@ -91,3 +92,17 @@ firefox-desktop:
 #  extends: .job_template
 #chrome-5:
 #  extends: .job_template
+
+pages:
+  stage: deploy
+  dependencies:
+    - chrome-desktop
+  script:
+    - mv coverage/ public/
+    - mv mochawesome-report/ public/
+  artifacts:
+    paths:
+      - public
+    expire_in: 30 days
+  # only:
+  #   - master
