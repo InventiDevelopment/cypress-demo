@@ -10,7 +10,7 @@ const BUCKET_NAME = process.env.BUCKET_NAME
 
 AWS.config.accessKeyId = process.env.AWS_ACCESS_ID;
 AWS.config.secretAccessKey = process.env.AWS_SECRET_KEY;
-AWS.config.region = 'eu-west-2';
+AWS.config.region = 'eu-west-3';
 
 // files are uploaded to s3://cypress-slack-reporter/remote/path
 // files are downloadable via aws s3 sync s3://cypress-slack-reporter/remote/path .
@@ -46,7 +46,7 @@ async function main() {
 }
 
 function processS3Paths(paths: string[]) {
-    const bucketURL = `https://${BUCKET_NAME}.s3.eu-west-2.amazonaws.com/`;
+    const bucketURL = `https://${BUCKET_NAME}.s3.eu-west-3.amazonaws.com/`;
     const processedS3Paths: string[] = [];
     paths.forEach(element => {
         processedS3Paths.push(`${bucketURL}${element}`);

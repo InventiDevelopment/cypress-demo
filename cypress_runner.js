@@ -54,7 +54,6 @@ cypress
     config: argv.config,
     env: argv.env,
   }).then(async (testResult) => {
-        console.log(process.env.BITBUCKET_BRANCH);
         const generatedReport = await Promise.resolve(
             generateReport({
                 files: ['cypress/reports/mocha/*.json'],
@@ -63,23 +62,20 @@ cypress
             }),
         );
         process.env.SLACK_WEBHOOK_URL = 'https://hooks.slack.com/services/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'
-        process.env.BUCKET_NAME = 'drivvn-report';
-
         //upload report into s3 bucket
-        // if (
-        //     process.env.BITBUCKET_BRANCH === 'master' ||
-        //     process.env.BITBUCKET_BRANCH === 'slack'
-        // ) {
+        if (
+            process.env.CI_COMMIT_BRANCH === 'master' ||
+            process.env.CI_COMMIT_BRANCH === 'slack'
+        ) {
             shell.exec('ts-node cypress/slack/s3Upload.ts');
+            // shell.exec('nodemon --watch \'cypress/slack/*.ts\' --exec \"ts-node\" cypress/slack/s3Upload.ts');
 
             const AWSBucket = require('s3-bucket-toolkit');
 
             const bucket = new AWSBucket({
-                // accessKeyId: process.env.AWS_ACCESS_ID,
-                // secretAccessKey: process.env.AWS_SECRET_KEY,
-                accessKeyId: "AKIAIV3EM542W7AYWERA",
-                secretAccessKey: "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",
-                region: 'eu-west-2',
+                accessKeyId: process.env.AWS_ACCESS_ID,
+                secretAccessKey: process.env.AWS_SECRET_KEY,
+                region: 'eu-west-3',
                 bucketACL: 'public-read',
                 bucketName: process.env.BUCKET_NAME,
                 pagingDelay: 500, // (optional) set a global delay in between s3 api calls, default: 500ms
@@ -101,12 +97,14 @@ cypress
                         }
                     });
                     process.env.BUCKET_OBJECT_VERSION = validVersion;
-                    shell.exec('ts-node cypress/support/slack/index.ts');
+                    shell.exec('ts-node cypress/slack/index.ts');
+                    // shell.exec('nodemon --watch \'cypress/slack/*.ts\' --exec \"ts-node\" cypress/slack/index.ts');
+
                     process.exit(testResult.totalFailed);
                 });
-        // } else {
-        //     process.exit(testResult.totalFailed);
-        // }
+        } else {
+            process.exit(testResult.totalFailed);
+        }
     })
     .catch((error) => {
         console.error('errors: ', error);

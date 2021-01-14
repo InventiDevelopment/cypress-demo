@@ -34,17 +34,17 @@ program
     .option(
         "--vcs-provider [type]",
         "VCS Provider [github|bitbucket|none]",
-        "bitbucket"
+        "github"
     )
     .option(
         "--ci-provider [type]",
         "CI Provider [circleci|jenkins|bitbucket|none|custom]",
-        "bitbucket"
+        "github"
     )
     .option(
         "--custom-url [type]",
         "On selected --ci-provider=custom this link will be set to Test Report",
-        `https://${process.env.BUCKET_NAME}.s3.eu-west-2.amazonaws.com/`
+        `https://${process.env.BUCKET_NAME}.s3.eu-west-3.amazonaws.com/`
     )
     .option(
         "--report-dir [type]",

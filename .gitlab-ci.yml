@@ -20,25 +20,25 @@ cache:
 
 # this job installs NPM dependencies and Cypress
 install:
-  image: cypress/browsers:node14.15.0-chrome86-ff82
+  image: node:12
   stage: build
 
   script:
-    - npm i
+    - npm ci
     # check Cypress binary path and cached version
     # useful to make sure we are not carrying around old versions
     - npx cypress cache path
     - npx cypress cache list
     #- $(npm bin)/print-env CI
-    - npm run cy:verify
-    - npm run cy:info
+#    - npm run cy:verify
+#    - npm run cy:info
 
 # all jobs that actually run tests can use the same definition
 .job_template1:
   image: cypress/browsers:node14.15.0-chrome86-ff82
   stage: test
   script:
-    - npm i
+    - npm ci
     # run Cypress test in load balancing mode
     - npm run test:ci
     - npx nyc report --reporter=text-summary
@@ -53,7 +53,7 @@ install:
   image: cypress/browsers:node14.15.0-chrome86-ff82
   stage: test
   script:
-    - npm i
+    - npm ci
     # run Cypress test in load balancing mode
     - npm run test:ci:mobile
     - npx nyc report --reporter=text-summary
@@ -63,12 +63,12 @@ install:
       - coverage
       - mochawesome-report
     expire_in: 10 day
-  
+
 .job_template3:
   image: cypress/browsers:node14.15.0-chrome86-ff82
   stage: test
   script:
-    - npm i
+    - npm ci
     # run Cypress test in load balancing mode
     - npm run test:ci:firefox
     - npx nyc report --reporter=text-summary
