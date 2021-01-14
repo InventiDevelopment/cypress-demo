@@ -22,3 +22,4 @@ cypress/reports
 .eslintcache
 .nyc_output
 debug.log
+aws-security
