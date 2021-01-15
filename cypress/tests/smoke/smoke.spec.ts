@@ -12,8 +12,9 @@ import { Endpoints } from "../../support/constants/endpoints";
 
 const userApi = Endpoints.USER_API;
 const profileApi = Endpoints.ANY_PROFILE_API;
-const settingsPageApi = Urls.SETTINGS_PAGE;
+const settingsPageUrl = Urls.SETTINGS_PAGE;
 const deleteArticleApi = Endpoints.DELETE_ARTICLE_API;
+const articleApi = Endpoints.ARTICLES_API;
 
 describe('Smoke scenarios suite', () => {
   beforeEach(() => {
@@ -24,12 +25,12 @@ describe('Smoke scenarios suite', () => {
   // GIVEN I am loged in user on homepage AND I click on "new post "
   // WHEN I fill in mandatory fields of article AND click on "publish"
   // THEN then the new article is saved
-
   // WHEN I click on delete article
   // THEN delete api responses code 200 and I can't see this article on my profile page
   it('[CD-T10] Add and delete article', () => {
     const title = randomString(7,"")
     const user = Cypress._.pick(Cypress.env('user'), 'username');
+    cy.intercept('DELETE', deleteArticleApi).as('deleteApi')
 
     Header.clickToAddArticle()
     Editor
@@ -38,7 +39,6 @@ describe('Smoke scenarios suite', () => {
       .fillArticleBody('this post is **important**.')
       .fillArticleTag('**important**')
       .addArticle();
-    cy.intercept('DELETE', deleteArticleApi).as('deleteApi')
     Editor.deleteCurrentArticle();
     cy.wait('@deleteApi').then(({response})=>{
       expect(response.statusCode).eq(200)
@@ -51,7 +51,10 @@ describe('Smoke scenarios suite', () => {
   // WHEN I click on any label
   // THEN I can see list of filtered articles
   it('[CD-T11] Filter articles according to label', () => {
+    cy.intercept('GET', articleApi).as('art')
+
     PopularTags.chooseNthTag(0);
+    cy.wait('@art')
     Feed.getArticlesCount().should('be.gte', 0);
   })
   
@@ -65,7 +68,7 @@ describe('Smoke scenarios suite', () => {
     cy.intercept('GET', profileApi).as('profile');
 
     Header.clickOnSettingsBtn();
-    cy.urlValidation(settingsPageApi)
+    cy.urlValidation(settingsPageUrl)
     Settings.getBioField().clear();
     Settings
       .fillBio(text)
