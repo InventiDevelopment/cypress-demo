@@ -14,6 +14,8 @@ const userApi = Endpoints.USER_API;
 const profileApi = Endpoints.ANY_PROFILE_API;
 const settingsPageApi = Urls.SETTINGS_PAGE;
 const deleteArticleApi = Endpoints.DELETE_ARTICLE_API;
+const articleApi = Endpoints.ARTICLES_API;
+const feedApi = Endpoints.FEED_API;
 
 describe('Smoke scenarios suite', () => {
   beforeEach(() => {
@@ -29,8 +31,6 @@ describe('Smoke scenarios suite', () => {
   // THEN delete api responses code 200 and I can't see this article on my profile page
   it('[CD-T10] Add and delete article', () => {
     const title = randomString(7,"")
-    const user = Cypress._.pick(Cypress.env('user'), 'username');
-
     Header.clickToAddArticle()
     Editor
       .fillArticleTitle(title)
@@ -43,7 +43,7 @@ describe('Smoke scenarios suite', () => {
     cy.wait('@deleteApi').then(({response})=>{
       expect(response.statusCode).eq(200)
     })
-    Header.clickOnMyAcc(user.username);
+    Header.clickOnMyAcc();
     cy.contains(`${title}`).should('not.exist')
   })
 
@@ -58,11 +58,12 @@ describe('Smoke scenarios suite', () => {
   // GIVEN I am registered user on homepage
   // WHEN I loged in and I edit my settings
   // THEN I my settings are eddited and saved.
-  it('[CD-T9] Log in and edit my biography', () => {
+  it('[CD-T9] Edit my biography', () => {
     var text = randomString(10, '');
-    const user = Cypress._.pick(Cypress.env('user'), 'username');
-    cy.intercept('PUT', userApi).as('api');
+    cy.intercept('PUT', userApi).as('users');
     cy.intercept('GET', profileApi).as('profile');
+    cy.intercept('GET', articleApi).as('articles');
+    cy.intercept('GET', feedApi).as('feed');
 
     Header.clickOnSettingsBtn();
     cy.urlValidation(settingsPageApi)
@@ -70,10 +71,12 @@ describe('Smoke scenarios suite', () => {
     Settings
       .fillBio(text)
       .getBioField().invoke('val').then((newBio) => {
-        cy.get('form').submit();
-        cy.wait('@api');
-        Header.clickOnMyAcc(user.username);
+        Settings.submitForm();
+        cy.wait('@users');
+        cy.wait('@feed');
+        Header.clickOnMyAcc();
         cy.wait('@profile');
+        cy.wait('@articles');
         Profile.getBiography().should('be.visible');
         Profile.getBiography().invoke('text').then((bio) => {
           expect(newBio).to.eq(bio.replace(/ /g, ''));

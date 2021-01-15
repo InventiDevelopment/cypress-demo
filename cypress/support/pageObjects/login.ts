@@ -11,6 +11,11 @@ class SignInPO {
     cy.findByTestId(PASSWD).type(password, { log: false } );
     return this
   }
+
+  submitForm(){
+    cy.get('form').submit();
+    return this;
+  }
 }
 
 export const LogIn = new SignInPO();

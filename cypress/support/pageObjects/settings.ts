@@ -10,5 +10,10 @@ class SettingsPO {
     this.getBioField().type(text)
     return this;
   }
+
+  submitForm(){
+    cy.get('form').submit();
+    return this;
+  }
 }
 export const Settings = new SettingsPO();

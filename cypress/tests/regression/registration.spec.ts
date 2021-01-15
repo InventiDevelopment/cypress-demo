@@ -6,6 +6,7 @@ import { Endpoints } from "../../support/constants/endpoints";
 import { Urls } from "../../support/constants/routs";
 
 const users = Endpoints.ALL_USERS_API;
+const feed = Endpoints.FEED_API;
 const register = Urls.REGISTER_PAGE;
 
 describe('Tests on register page', () => {
@@ -20,6 +21,7 @@ describe('Tests on register page', () => {
   it('[CD-T12] Register new user', () => {
     const user = randomString(10,'')
     cy.intercept('POST', users).as('users')
+    cy.intercept('GET', feed).as('feed')
     
     RegistrationForm
       .fillUserName(user)
@@ -27,7 +29,8 @@ describe('Tests on register page', () => {
       .fillEmail(`${user}@cypress-demo.cz`)
       .signUpBtn()
     cy.wait('@users')
-    Header.getUserName(user).should('exist')
+    cy.wait('@feed')
+    Header.getUserName().should('contains',user)
   })
 
   // GIVEN I am not registered user on register page

@@ -2,6 +2,7 @@
 const SIGNUP_BTN = 'TEST_SIGN_UP_BTN';
 const ARTICLE_ADD = 'TEST_ADD_ARTICLE';
 const SETTINGS = 'TEST_SETTINGS';
+const USERNAME_LINK = 'TEST_USERNAME'
 
 import { Feed } from '../pageObjects/feed';
 import { Settings } from '../pageObjects/settings';
@@ -9,15 +10,15 @@ import { Profile } from './profile';
 
 class HeaderPO {
   clickToSignUp() {
-    return cy.findAllByTestId(SIGNUP_BTN).click();
+    return cy.findByTestId(SIGNUP_BTN).click();
   }
 
-  getUserName(user) {
-    return cy.contains(`${user}`);
+  getUserName() {
+    return cy.findByTestId(USERNAME_LINK).invoke('text');
   }
 
-  clickOnMyAcc(user) {
-    this.getUserName(user).click();
+  clickOnMyAcc() {
+    cy.findByTestId(USERNAME_LINK).click();
     return Profile;
   }
 
