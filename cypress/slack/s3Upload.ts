@@ -1,11 +1,10 @@
-import globby from "globby";
+import * as globby from "globby";
 import * as path from "path";
 import Uploader from "s3-batch-upload";
 import { logger } from "bs-logger";
 const AWS = require('aws-sdk');
 const s3 = new AWS.S3();
 
-const BUCKET_NAME = process.env.BUCKET_NAME
 // AWS.config.loadFromPath('./aws-credentials.json');
 
 AWS.config.accessKeyId = process.env.AWS_ACCESS_ID;
@@ -20,7 +19,7 @@ function uploadS3(artefactPath: string, glob: string) {
     return new Uploader({
         accessControlLevel: "public-read",
         s3Client: s3,
-        bucket: BUCKET_NAME,
+        bucket: 'cypress-inventi-demo',
         localPath: path.resolve(process.cwd(), artefactPath),
         remotePath: path.join(artefactPath),
         glob,
@@ -46,7 +45,7 @@ async function main() {
 }
 
 function processS3Paths(paths: string[]) {
-    const bucketURL = `https://${BUCKET_NAME}.s3.eu-west-3.amazonaws.com/`;
+    const bucketURL = `https://cypress-inventi-demo.s3.eu-west-3.amazonaws.com/`;
     const processedS3Paths: string[] = [];
     paths.forEach(element => {
         processedS3Paths.push(`${bucketURL}${element}`);

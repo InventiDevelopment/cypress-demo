@@ -61,6 +61,8 @@ cypress
                 saveJson: true,
             }),
         );
+        console.log(process.env.BUCKET_NAME)
+        process.env.BUCKET_NAME = 'cypress-inventi-demo'
         process.env.SLACK_WEBHOOK_URL = 'https://hooks.slack.com/services/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'
         //upload report into s3 bucket
         if (
