@@ -1,5 +1,7 @@
 # Cypress demo
 
+![Alt text](img/pyramid.png?raw=true "Cypress automation testing pyramid")
+
 Let me introduce you our Cypress Automation Framework for unit, component, integration, api and e2e regression tests we are inventing as a presentation of our automation skills. 
 Our framework is universal and easy configurable.
 
@@ -38,16 +40,25 @@ Run tests with desktop viewport in Firefox
 
 Jobs are run in parallel. We can add more jobs with different configuration here.
 
+![Alt text](img/pipeline.png?raw=true "CI/CD pipeline")
+
 ## Reports
 
 You can download HTML report including videos of failed tests from jobs artifacts.
 
+![Alt text](img/report.png?raw=true "Cypress Mochawesome HTML report")
+
 ## Cypress dashboard (sorry-cypress)
 In our repo we have predefined configuration for [sorry-cypress dashboard](https://sorry-cypress.dev/) which is a very interesting plugin in cypress community for live monitoring of executed test suites.
+
+![Alt text](img/sorry.png?raw=true "Cypress dashboard")
+![Alt text](img/sory2.png?raw=true "Cypress dashboard")
 
 ## Code Coverage
 
 The react app is instumented by us, so it allows us to properly follow the code coverage of it. You can download code coverage reports from job artifacts.
+
+![Alt text](img/codecoverage.png?raw=true "Cypress code coverage of app")
 
 ## Installation
 
