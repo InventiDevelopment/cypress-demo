@@ -23,3 +23,4 @@ cypress/reports
 .nyc_output
 debug.log
 aws-security
+data

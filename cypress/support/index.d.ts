@@ -9,5 +9,6 @@ declare namespace Cypress {
     findByTestId(dataId: string): Chainable;
     findByAllTestId(dataId: string): Chainable;
     containsDataId(dataId: string): Chainable;
+    urlValidation(url: string): Chainer<void>;
   }
 }
