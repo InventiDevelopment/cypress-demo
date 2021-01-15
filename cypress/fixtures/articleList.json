@@ -152,23 +152,6 @@
       },
       "favorited": false,
       "favoritesCount": 0
-    },
-    {
-      "title": "10. article",
-      "slug": "new-year-2021-by-mk-8gxoyy",
-      "body": "new year 2021 by MK",
-      "createdAt": "2021-01-11T09:26:12.749Z",
-      "updatedAt": "2021-01-11T09:26:12.749Z",
-      "tagList": ["newyear21"],
-      "description": "new year 2021 by MK",
-      "author": {
-        "username": "manjeet99",
-        "bio": null,
-        "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
-        "following": false
-      },
-      "favorited": false,
-      "favoritesCount": 0
     }
   ],
   "articlesCount": 10

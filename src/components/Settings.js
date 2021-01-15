@@ -68,6 +68,7 @@ class SettingsForm extends React.Component {
           <fieldset className="form-group">
             <input
               className="form-control"
+              data-testid={`TEST_PICTURE`}
               type="text"
               placeholder="URL of profile picture"
               value={this.state.image}
@@ -77,6 +78,7 @@ class SettingsForm extends React.Component {
           <fieldset className="form-group">
             <input
               className="form-control form-control-lg"
+              data-testid={`TEST_NAME`}
               type="text"
               placeholder="Username"
               value={this.state.username}
@@ -86,6 +88,7 @@ class SettingsForm extends React.Component {
           <fieldset className="form-group">
             <textarea
               className="form-control form-control-lg"
+              data-testid={`TEST_BIO`}
               rows="8"
               placeholder="Short bio about you"
               value={this.state.bio}
@@ -96,6 +99,7 @@ class SettingsForm extends React.Component {
           <fieldset className="form-group">
             <input
               className="form-control form-control-lg"
+              data-testid={`TEST_EMAIL`}
               type="email"
               placeholder="Email"
               value={this.state.email}

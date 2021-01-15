@@ -6,7 +6,8 @@ declare namespace Cypress {
     getLoginToken(user: string): Chainable<void>;
     login(): Chainable<void>;
     registerUserIfNeeded(): Chainable<void>;
-    getByDataId(dataId: string): Chainable;
+    findByTestId(dataId: string): Chainable;
+    findByAllTestId(dataId: string): Chainable;
     containsDataId(dataId: string): Chainable;
   }
 }

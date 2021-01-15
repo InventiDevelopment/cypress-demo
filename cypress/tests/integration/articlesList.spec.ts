@@ -15,7 +15,7 @@ describe('Integration tests - check that articles are loaded correctly from fixt
         fixture: 'articleList'
       })
     cy.visit('/')
-    Feed.getAllArticles().should('have.length', 10)
+    Feed.getAllArticles().should('have.length', 9)
   })
 
   //GIVEN I am a not logged user 

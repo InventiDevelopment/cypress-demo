@@ -62,6 +62,7 @@ class Login extends React.Component {
                     <input
                       className="form-control form-control-lg"
                       type="email"
+                      data-testid={`TEST_EMAIL`}
                       placeholder="Email"
                       value={email}
                       onChange={this.changeEmail} />
@@ -71,6 +72,7 @@ class Login extends React.Component {
                     <input
                       className="form-control form-control-lg"
                       type="password"
+                      data-testid={`TEST_PASSWD`}
                       placeholder="Password"
                       value={password}
                       onChange={this.changePassword} />
