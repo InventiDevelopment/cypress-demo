@@ -32,7 +32,7 @@ Cypress.Commands.add('login', (user = Cypress.env('user')) => {
   });
 
   cy.visit('/');
-  cy.findAllByTestId('TEST_GLOBAL_FEED').should('be.visible');
+  cy.findByTestId('TEST_GLOBAL_FEED').should('be.visible');
 });
 
 export function getLoginToken(user = Cypress.env('user')) {
@@ -59,4 +59,12 @@ Cypress.Commands.add('registerUserIfNeeded', (options = {}) => {
     },
     failOnStatusCode: false,
   });
+});
+
+Cypress.Commands.add('urlValidation', (url) => {
+  cy.url({ timeout: 60000 }).should('contain', url);
+});
+
+Cypress.Commands.add('getByDataIdWithChild', (dataId, child) => {
+  cy.get(`[data-testid='${dataId}'] > ${child}`);
 });
