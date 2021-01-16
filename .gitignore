@@ -17,7 +17,7 @@ npm-debug.log
 
 cypress/videos
 mochawesome-report
-cypress/reports
+cypress/screenshots
 
 .eslintcache
 .nyc_output

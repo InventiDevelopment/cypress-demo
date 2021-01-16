@@ -24,7 +24,7 @@ install:
   stage: build
 
   script:
-    - npm i
+    - npm ci
     # check Cypress binary path and cached version
     # useful to make sure we are not carrying around old versions
     - npx cypress cache path
@@ -38,9 +38,9 @@ install:
   image: cypress/browsers:node14.15.0-chrome86-ff82
   stage: test
   script:
-    - npm i
+    - npm ci
     # run Cypress test in load balancing mode
-    - npm run test:ci
+    - cypress run --browser chrome --headless --record --key cypress_demo --parallel --ci-build-id $CI_CONCURRENT_ID
     - npx nyc report --reporter=text-summary
   artifacts:
     when: always
@@ -63,7 +63,7 @@ install:
       - coverage
       - mochawesome-report
     expire_in: 10 day
-  
+
 .job_template3:
   image: cypress/browsers:node14.15.0-chrome86-ff82
   stage: test

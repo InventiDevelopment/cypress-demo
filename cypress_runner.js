@@ -1,10 +1,18 @@
 /// <reference types="Cypress" />
 
-const rm = require('rimraf');
+
+
 const cypress = require('cypress');
 const yargs = require('yargs');
-const marge = require('mochawesome-report-generator');
-const { merge } = require('mochawesome-merge');
+
+
+function buildId() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+
 
 const argv = yargs
   .options({
@@ -33,16 +41,24 @@ const argv = yargs
       alias: 'e',
       describe: 'run test with specific enviromental variables',
     },
+    record: {
+      alias: 'r',
+      describe: 'run test with specific record',
+    },
+    key: {
+      alias: 'k',
+      describe: 'run test with specific key',
+    },
+    parallel: {
+      alias: 'p',
+      describe: 'parallel run',
+    },
+    ciBuildId: {
+      alias: 'ciId',
+      describe: 'CI build id',
+    },
   })
   .help().argv;
-
-rm('cypress/reports/mocha/*.', (error) => {
-  if (error) {
-    console.error(`Error while removing existing report files: ${error}`);
-    process.exit(1);
-  }
-  console.log('Removing all existing report files successfully!');
-});
 
 cypress
   .run({
@@ -52,17 +68,12 @@ cypress
     headless: argv.mode === 'headless',
     config: argv.config,
     env: argv.env,
+    record: argv.record = 'true',
+    key: argv.key = 'cypress_demo',
+    parallel: argv.parallel = 'true',
+    ciBuildId: argv.ciId = buildId(),
   })
-  .then(async (testResult) => {
-    console.log(process.env.BITBUCKET_BRANCH);
-    const generatedReport = await Promise.resolve(
-      generateReport({
-        files: ['cypress/reports/mocha/*.json'],
-        inline: true,
-        saveJson: true,
-      }),
-    );
-    console.log('Merged report available here:-', generatedReport);
+  .then( testResult => {
     console.log(testResult.totalFailed);
     process.exit(testResult.totalFailed);
   })
@@ -70,7 +81,3 @@ cypress
     console.error('errors: ', error);
     process.exit(1);
   });
-
-function generateReport(options) {
-  return merge(options).then((report) => marge.create(report, options));
-}

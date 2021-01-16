@@ -1,13 +1,9 @@
 {
   "baseUrl": "http://localhost:4100",
-  "video": false,
-  "videoCompression": false,
-  "videoUploadOnPasses": false,
-  "reporter": "cypress-multi-reporters",
-  "reporterOptions": {
-    "configFile": "reporterOpts.json"
-  },
-  "screenshotsFolder": "mochawesome-report/assets/screenshots/",
+  "$schema": "https://on.cypress.io/cypress.schema.json",
+  "video": true,
+  "screenshots": true,
+  "videoCompression": 1,
   "fixturesFolder": "cypress/fixtures",
   "integrationFolder": "cypress/tests",
   "pluginsFile": "cypress/plugins/index.js",
@@ -21,7 +17,7 @@
     "apiUrl": "https://conduit.productionready.io/api",
     "user": {
       "email": "ferrro@gmail.com",
-      "password": "ferrro111", 
+      "password": "ferrro111",
       "username": "ferrro"
     }
   },
