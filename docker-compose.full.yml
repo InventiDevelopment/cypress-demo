@@ -7,14 +7,15 @@ services:
   director:
     image: agoldis/sorry-cypress-director:latest
     environment:
-      DASHBOARD_URL: cypress-inventi-dashboard.herokuapp.com/
-      MONGODB_URI: 'mongodb://mongo:27017'
+      DASHBOARD_URL: 'http://cypress-inventi-dashboard.herokuapp.com'
+      MONGODB_URI: ${MONGO_URI}
       MONGODB_DATABASE: 'cypress-db'
       EXECUTION_DRIVER: '../execution/mongo/driver'
       SCREENSHOTS_DRIVER: '../screenshots/s3.driver'
-      AWS_ACCESS_KEY_ID: 'key'
-      AWS_SECRET_ACCESS_KEY: 'secret'
-      S3_BUCKET: cypress-inventi-dashboard
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      S3_REGION: "us-east-2"
+      S3_BUCKET: 'cy-sorry-dashboard'
     ports:
       - 1234:1234
     depends_on:
@@ -23,7 +24,7 @@ services:
   api:
     image: agoldis/sorry-cypress-api:latest
     environment:
-      MONGODB_URI: 'mongodb://mongo:27017'
+      MONGODB_URI: ${MONGO_URI}
       MONGODB_DATABASE: 'sorry-cypress'
     ports:
       - 4000:4000
@@ -33,7 +34,9 @@ services:
   dashboard:
     image: agoldis/sorry-cypress-dashboard:latest
     environment:
-      GRAPHQL_SCHEMA_URL: http://localhost:4000
+      GRAPHQL_SCHEMA_URL: 'http://cypress-inventi-api.herokuapp.com'
+      CI_URL: ''
+      PORT: 8080
     ports:
       - 8080:8080
     depends_on:

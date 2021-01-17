@@ -1,6 +1,7 @@
 # first, install Cypress, then run all tests (in parallel)
 stages:
   - build
+  - install
   - test
 
 # to cache both npm modules and Cypress binary we use environment variables
@@ -18,6 +19,20 @@ cache:
     - cache/Cypress
     - node_modules
 
+#services:
+#  - docker:dind
+#
+#before_script:
+#  - docker info
+#  - docker-compose --version
+
+build image:
+  image: tmaier/docker-compose:latest
+  stage: build
+  script:
+    - docker info
+    - docker-compose --version
+    - docker-compose -f docker-compose.full.yml up
 # this job installs NPM dependencies and Cypress
 install:
   image: cypress/browsers:node14.15.0-chrome86-ff82
@@ -40,7 +55,7 @@ install:
   script:
     - npm ci
     # run Cypress test in load balancing mode
-    - cypress run --browser chrome --headless --record --key cypress_demo --parallel --ci-build-id $CI_CONCURRENT_ID
+    - npx cypress run --browser chrome --headless --config viewportWidth=375,viewportHeight=667 --record --key cypress_demo --parallel --ci-build-id $CI_CONCURRENT_ID
     - npx nyc report --reporter=text-summary
   artifacts:
     when: always
@@ -55,7 +70,7 @@ install:
   script:
     - npm i
     # run Cypress test in load balancing mode
-    - npm run test:ci:mobile
+    - npx cypress run --browser chrome --headless --record --key cypress_demo --parallel --ci-build-id $CI_CONCURRENT_ID
     - npx nyc report --reporter=text-summary
   artifacts:
     when: always
@@ -70,7 +85,7 @@ install:
   script:
     - npm i
     # run Cypress test in load balancing mode
-    - npm run test:ci:firefox
+    - npx cypress run --browser firefox --headless --record --key cypress_demo --parallel --ci-build-id $CI_CONCURRENT_ID
     - npx nyc report --reporter=text-summary
   artifacts:
     when: always

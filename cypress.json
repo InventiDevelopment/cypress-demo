@@ -3,7 +3,7 @@
   "$schema": "https://on.cypress.io/cypress.schema.json",
   "video": true,
   "screenshots": true,
-  "videoCompression": 1,
+  "videoCompression": 0,
   "fixturesFolder": "cypress/fixtures",
   "integrationFolder": "cypress/tests",
   "pluginsFile": "cypress/plugins/index.js",
