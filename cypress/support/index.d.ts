@@ -10,5 +10,8 @@ declare namespace Cypress {
     findByAllTestId(dataId: string): Chainable;
     containsDataId(dataId: string): Chainable;
     urlValidation(url: string): Chainer<void>;
+    postComment(url: string): Chainer<void>;
+    deleteComment(url: string, id: string): Chainer<void>;
+    getComments(url: string): Chainer<void>;
   }
 }
