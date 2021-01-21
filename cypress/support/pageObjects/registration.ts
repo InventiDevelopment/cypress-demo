@@ -3,7 +3,6 @@ const USERNAME = 'TEST_USERNAME';
 const EMAIL = 'TEST_EMAIL';
 const PASSWORD = 'TEST_PASSWORD';
 const SUBMIT = 'TEST_SUBMIT_BTN';
-const ERROR_MSG = 'TEST_ERROR_MSG';
 
 class RegistrationFormPO {
   fillUserName(username: string) {

@@ -4,9 +4,10 @@ import { Urls } from '../../support/constants/routs';
 import { LogIn } from '../../support/pageObjects/login';
 import { Endpoints } from '../../support/constants/endpoints';
 import { Header } from '../../support/pageObjects/header';
+import { randomString } from '../../support/helpers';
 
 const login = Endpoints.LOGIN_API;
-const user = Cypress._.pick(Cypress.env('user'),'username', 'email', 'password');
+const user = Cypress._.pick(Cypress.env('user'), 'username', 'email', 'password');
 
 describe('Tests on login page', () => {
   beforeEach(() => {
@@ -22,5 +23,23 @@ describe('Tests on login page', () => {
     cy.wait('@api').its('response.statusCode').should('eq', 200);
     cy.url().should('be.eq', Cypress.config().baseUrl + '/');
     Header.getUserName().should('contains', user.username);
+  });
+
+  //GIVEN I am a robot on login page
+  //WHEN I am push a lot of input data to the login form
+  //THEN app is still responsible
+
+  Cypress._.times(100, (k) => {
+    it(`sublitting input login form ${k + 1} / 100`, () => {
+      const user = randomString(10, '');
+      cy.visit(Urls.LOGIN_PAGE);
+      cy.intercept('POST', login).as('api');
+      LogIn.fillEmail(`${user}1234@securitytest.com`)
+        .fillPassword(`${user}12345`)
+        .submitForm()
+        .getErrorMsg()
+        .should('contain', 'email or password is invalid');
+      cy.wait('@api');
+    });
   });
 });
