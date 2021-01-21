@@ -30,12 +30,11 @@ describe('Tests on login page', () => {
   //THEN app is still responsible
 
   Cypress._.times(100, (k) => {
-    it(`sublitting input login form ${k + 1} / 100`, () => {
-      const user = randomString(10, '');
-      cy.visit(Urls.LOGIN_PAGE);
+    it(`[CD-T17] Sublitting input login form ${k + 1} / 100`, () => {
+      const acc = randomString(10, '');
       cy.intercept('POST', login).as('api');
-      LogIn.fillEmail(`${user}1234@securitytest.com`)
-        .fillPassword(`${user}12345`)
+      LogIn.fillEmail(`${acc}1234@securitytest.com`)
+        .fillPassword(`${acc}12345`)
         .submitForm()
         .getErrorMsg()
         .should('contain', 'email or password is invalid');
