@@ -1,21 +1,20 @@
-/// <reference path="../index.d.ts" />
 const USERNAME = 'TEST_USERNAME';
 const EMAIL = 'TEST_EMAIL';
 const PASSWORD = 'TEST_PASSWORD';
 const SUBMIT = 'TEST_SUBMIT_BTN';
 
 class RegistrationFormPO {
-  fillUserName(username: string) {
+  fillUserName(username) {
     cy.findByTestId(USERNAME).type(username);
     return this;
   }
 
-  fillEmail(email: string) {
+  fillEmail(email) {
     cy.findByTestId(EMAIL).type(email);
     return this;
   }
 
-  fillPassword(password: string) {
+  fillPassword(password) {
     cy.findByTestId(PASSWORD).type(password, { log: false });
     return this;
   }
@@ -25,7 +24,7 @@ class RegistrationFormPO {
     return this;
   }
 
-  getErrorMsg(item: string) {
+  getErrorMsg(item) {
     return cy.findByTestId(`TEST_ERROR_${item}`);
   }
 }

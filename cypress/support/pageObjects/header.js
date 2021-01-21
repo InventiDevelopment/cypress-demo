@@ -1,11 +1,10 @@
-/// <reference path="../index.d.ts" />
 const SIGNUP_BTN = 'TEST_SIGN_UP_BTN';
 const ARTICLE_ADD = 'TEST_ADD_ARTICLE';
 const SETTINGS = 'TEST_SETTINGS';
 const USERNAME_LINK = 'TEST_USERNAME'
 
-import { Feed } from '../pageObjects/feed';
-import { Settings } from '../pageObjects/settings';
+import { Feed } from './feed';
+import { Settings } from './settings';
 import { Profile } from './profile';
 
 class HeaderPO {

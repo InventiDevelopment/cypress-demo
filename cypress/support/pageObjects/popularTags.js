@@ -1,8 +1,7 @@
-/// <reference path="../index.d.ts" />
 const TAG = 'TEST_TAG_';
 
 class PopularTagsPO {
-  chooseNthTag(nth: number) {
+  chooseNthTag(nth) {
     return cy.containsDataId(TAG).eq(nth).click();
   }
 }

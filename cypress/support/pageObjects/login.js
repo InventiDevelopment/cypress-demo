@@ -3,12 +3,12 @@ const PASSWD = 'TEST_PASSWD';
 const ERROR_MSG='TEST_ERROR_';
 
 class SignInPO {
-  fillEmail(mail: string) {
+  fillEmail(mail) {
     cy.findByTestId(EMAIL).type(mail)
     return this
   }
 
-  fillPassword(password: string) {
+  fillPassword(password) {
     cy.findByTestId(PASSWD).type(password, { log: false } );
     return this
   }

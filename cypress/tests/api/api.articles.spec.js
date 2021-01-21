@@ -1,5 +1,3 @@
-/// <reference types="react-scripts" />
-
 const apiUrl = Cypress.env('apiUrl');
 
 describe('Articles api tests', () => {
