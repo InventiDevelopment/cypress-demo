@@ -1,5 +1,6 @@
 const EMAIL = 'TEST_EMAIL';
 const PASSWD = 'TEST_PASSWD';
+const ERROR_MSG='TEST_ERROR_';
 
 class SignInPO {
   fillEmail(mail: string) {
@@ -15,6 +16,10 @@ class SignInPO {
   submitForm(){
     cy.get('form').submit();
     return this;
+  }
+
+  getErrorMsg() {
+    return cy.containsDataId(ERROR_MSG);
   }
 }
 
