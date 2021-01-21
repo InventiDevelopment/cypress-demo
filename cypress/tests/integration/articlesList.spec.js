@@ -1,6 +1,6 @@
 
-import {Feed} from "../../support/pageObjects/feed";
-import {Endpoints} from "../../support/constants/endpoints"
+import {Feed} from '../../support/pageObjects/feed';
+import {Endpoints} from '../../support/constants/endpoints'
 
 const articlesApi = Endpoints.ARTICLES_API;
 

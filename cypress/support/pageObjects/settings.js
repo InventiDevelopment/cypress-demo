@@ -6,7 +6,7 @@ class SettingsPO {
     return cy.findByTestId(BIO);
   }
 
-  fillBio(text: string) {
+  fillBio(text) {
     this.getBioField().type(text)
     return this;
   }

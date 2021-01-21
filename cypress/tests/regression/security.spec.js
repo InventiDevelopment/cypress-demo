@@ -1,9 +1,5 @@
 /// <reference types="Cypress" />
-import { Endpoints } from '../../support/constants/endpoints';
-import { Urls } from '../../support/constants/routs';
 import { Feed } from '../../support/pageObjects/feed';
-import { LogIn } from '../../support/pageObjects/login';
-const login = Endpoints.LOGIN_API;
 
 // since we are using Chrome debugger protocol API
 // we should only run these tests when NOT in Firefox browser
@@ -65,7 +61,7 @@ describe('security tests', { browser: '!firefox' }, () => {
   //GIVEN I am a user 
   //WHEN I am in offline mode
   //THEN I still see articles from cache    
-  it('[CD-T15]Check articles are visible in offline mode', () => {
+  it('[CD-T15] - [SECURITY] Check articles are visible in offline mode', () => {
     cy.visit('/');
     assertOnline();
 

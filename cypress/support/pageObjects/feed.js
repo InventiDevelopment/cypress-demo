@@ -1,4 +1,3 @@
-/// <reference path="../index.d.ts" />
 const ARTICLE_PREVIEW = 'TEST_ARTICLE_PREVIEW';
 const GLOBAL_FEED_BUTTON = 'TEST_GLOBAL_FEED';
 

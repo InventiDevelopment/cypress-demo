@@ -1,4 +1,3 @@
-/// <reference path="../index.d.ts" />
 const ARTICLE_TITLE = 'TEST_ARTICLE_TITLE';
 const ARTICLE_DESC = 'TEST_ARTICLE_DESC';
 const ARTICLE_BODY = 'TEST_ARTICLE_BODY';
@@ -7,19 +6,19 @@ const ARTICLE_ADD_BTN = 'TEST_PUBLISH_ARTICLE';
 const ARTICLE_DEL_BTN = 'TEST_DELETE_ARTICLE';
 
 class EditorPO {
-  fillArticleTitle(articleTitle: string) {
+  fillArticleTitle(articleTitle) {
     cy.findByTestId(ARTICLE_TITLE).type(articleTitle);
     return this;
   }
-  fillArticleDesc(articleDesc: string) {
+  fillArticleDesc(articleDesc) {
     cy.findByTestId(ARTICLE_DESC).type(articleDesc);
     return this;
   }
-  fillArticleBody(articleBody: string) {
+  fillArticleBody(articleBody) {
     cy.findByTestId(ARTICLE_BODY).type(articleBody);
     return this;
   }
-  fillArticleTag(articleTag: string) {
+  fillArticleTag(articleTag) {
     cy.findByTestId(ARTICLE_TAG).type(articleTag);
     return this;
   }
