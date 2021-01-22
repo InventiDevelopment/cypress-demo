@@ -45,6 +45,7 @@
     "cy:run:mobile": "node cypress_runner -b chrome -m headless --config viewportWidth=375,viewportHeight=667 -s 'cypress/tests/**/*.spec.js'  --env TEST_TAGS=CD",
     "cy:run:firefox": "node cypress_runner -b firefox -m headless -s 'cypress/tests/**/*.spec.js' --env TEST_TAGS=CD",
     "cy:run:security": "node cypress_runner -b chrome -m headless -s 'cypress/tests/**/*.spec.js' --env TEST_TAGS=SECURITY",
+    "cy:run:smoke": "node cypress_runner -b chrome -m headless -s 'cypress/tests/**/*.spec.js' --env TEST_TAGS=SMOKE",
     "cy:parallel:run": "cypress run --record --key cypress_demo --parallel --ci-build-id $CI_CONCURRENT_ID",
     "cy:verify": "cypress verify",
     "cy:info": "cypress info",

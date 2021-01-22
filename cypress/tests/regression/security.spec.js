@@ -61,7 +61,7 @@ describe('security tests', { browser: '!firefox' }, () => {
   //GIVEN I am a user 
   //WHEN I am in offline mode
   //THEN I still see articles from cache    
-  it('[CD-T15] - [SECURITY] Check articles are visible in offline mode', () => {
+  it('[CD-T15] Check articles are visible in offline mode [SECURITY]', () => {
     cy.visit('/');
     assertOnline();
 

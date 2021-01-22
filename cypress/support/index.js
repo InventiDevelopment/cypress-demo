@@ -99,3 +99,27 @@ Cypress.Commands.add('deleteComment', (url, id) => {
 Cypress.Commands.add('getComments', (url) => {
   cy.request('GET', `${apiUrl}/articles/${url}/comments`);
 });
+
+Cypress.Commands.add('favoriteArticle', (url) => {
+  getLoginToken(user).then((token) => {
+    cy.request({
+      method: 'POST',
+      url: `${apiUrl}/articles/${url}/favorite`,
+      headers: {
+        authorization: `Token ${token}`,
+      },
+    });
+  });
+});
+
+Cypress.Commands.add('unfavorite', (url) => {
+  getLoginToken(user).then((token) => {
+    cy.request({
+      method: 'DELETE',
+      url: `${apiUrl}/articles/${url}/favorite`,
+      headers: {
+        authorization: `Token ${token}`,
+      },
+    });
+  });
+});
