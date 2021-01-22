@@ -5,6 +5,7 @@
 //import '@cypress-select-tests'
 
 module.exports = (on, config) => {
+  require('@cypress/react/plugins/react-scripts')(on, config);
   const selectTests = require('cypress-select-tests');
   require('@cypress/code-coverage/task')(on, config);
   on('file:preprocessor', selectTests(config, pickTests));
@@ -22,5 +23,4 @@ const pickTests = (filename, foundTests, config) => {
   );
   console.log(containsAll.length);
   return containsAll;
-return foundTests;
 };

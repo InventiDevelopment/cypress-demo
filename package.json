@@ -4,9 +4,10 @@
   "private": true,
   "devDependencies": {
     "@cypress/code-coverage": "^3.9.1",
+    "@cypress/react": "^4.16.3",
     "@testing-library/cypress": "^7.0.3",
     "cross-env": "^5.1.4",
-    "cypress": "^6.2.1",
+    "cypress": "^6.3.0",
     "cypress-multi-reporters": "^1.4.0",
     "cypress-select-tests": "^1.5.9",
     "eslint-plugin-cypress": "^2.11.2",

@@ -30,6 +30,18 @@ Test scenarios are written in GEVEN WHEN THEN format and are saved to [Jira] or 
 
 ***THEN*** I can see the special text on the page
 
+## Tests
+
+For demo purposes we prepared different types of tests to show you what we can cover with Cypress in a really short time (20 MD)
+
+***Component tests*** - visual unit tests for real React/Vue/.. components can test functionality and design of your components separately as well as unit tests test different functions od your app
+***API tests*** - better solution is to use some special framework like JEST. But Cypress can manage API tests in a really cool way too. We can test xhr requests, responces and schemas directly from Cypress
+***Integration tests*** - tests based on mock data from fixure files allows you to test main app functionality with known data set. It is important to avoid flaky tests.
+***E2E tests*** - regression/smoke - high power tests that cover your code in the most efficient way.
+***Security test*** - e2e regression tests that help to check your app from security point of view, e.g. app behaivior in offline mode or robot attack to input form test.
+***Visual regression tests*** - TBD - tests that are based on screenshots comparation with help of third party tool like Percy.io is. Tests can help you to be sure that design of your app or components is stable.
+
+
 ## CI/CD
 
 Gitlab pipeline is set as a part of CI/CD delivery. We run all our tests right after every commit. There are 3 jobs:
@@ -39,6 +51,8 @@ Run tests with mobile viewport in Chrome
 Run tests with desktop viewport in Firefox
 
 Jobs are run in parallel. We can add more jobs with different configuration here.
+
+We can also categorise our tests to be able to run only one special set of the tests on demand. For example [SMOKE], [SECURITY], [VISUAL]
 
 ![Alt text](img/pipeline.png?raw=true "CI/CD pipeline")
 
