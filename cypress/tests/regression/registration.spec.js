@@ -1,9 +1,9 @@
 
-import { randomString } from "../../support/helpers";
-import { Header } from "../../support/pageObjects/header";
-import { RegistrationForm } from "../../support/pageObjects/registration";
-import { Endpoints } from "../../support/constants/endpoints";
-import { Urls } from "../../support/constants/routs";
+import { randomString } from '../../support/helpers';
+import { Header } from '../../support/pageObjects/header';
+import { RegistrationForm } from '../../support/pageObjects/registration';
+import { Endpoints } from '../../support/constants/endpoints';
+import { Urls } from '../../support/constants/routs';
 
 const users = Endpoints.ALL_USERS_API;
 const feed = Endpoints.FEED_API;
@@ -18,7 +18,7 @@ describe('Tests on register page', () => {
   // WHEN fill in mandatory values with valid data
   // AND click on Sign up button
   // THEN new user is created
-  it('[CD-T12] Register new user', () => {
+  it('[CD-T12] Register new user [SMOKE]', () => {
     const user = randomString(10,'')
     cy.intercept('POST', users).as('users')
     cy.intercept('GET', feed).as('feed')

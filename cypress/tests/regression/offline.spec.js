@@ -60,7 +60,7 @@ describe('offline mode', { browser: '!firefox' }, () => {
   //GIVEN I am a user 
   //WHEN I am in offline mode
   //THEN I still see articles from cache    
-  it('[CD-T15]shows network status', () => {
+  it('[CD-T15]Shows network status', () => {
     cy.visit('/');
     assertOnline();
 
