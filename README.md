@@ -18,7 +18,7 @@ Test attributes are created by our team directly inside Frontend main repositor
 
 ## Scenarios and test coverage 
 
-Test scenarios are written in GEVEN WHEN THEN format and are saved to [Jira](https://jira.inventi.cz/secure/Tests.jspa#/design?projectId=19000) or you can find them as a part of comment before each test.
+Test scenarios are written in GEVEN WHEN THEN format and are saved to [Jira] or you can find them as a part of comment before each test.
 
 #### Example of integration test scenario:
 
@@ -90,9 +90,6 @@ For execution parallel tests run command:
 ```
 For integration with some cloud platform follow [https://sorry-cypress.dev/](https://sorry-cypress.dev/)
 Remove html reports storing from ***.gitlab-ci.yml*** and set ***cypress.json*** file according [https://github.com/sorry-cypress/sorry-cypress/blob/master/example/cypress.json](https://github.com/sorry-cypress/sorry-cypress/blob/master/example/cypress.json)
-
-## Confluence page
-You can find more information on our [confluence page](https://confluence.inventi.cz/display/TA/Cypress+demo)
 
 ## INVENTI Developers 
 Oxana ŠAMANINA, Miroslav VRANKA, Jana ŠUMBEROVÁ
