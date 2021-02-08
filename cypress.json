@@ -27,6 +27,8 @@
   },
   "viewportWidth": 1600,
   "viewportHeight": 1200,
+  "experimentalComponentTesting": true,
+  "componentFolder": "cypress/tests/component",
   "retries": {
     "runMode": 0,
     "openMode": 0
