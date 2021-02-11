@@ -5,5 +5,6 @@ export const Endpoints ={
   USER_API : '**/user',
   ANY_PROFILE_API : '**/profiles/*',
   LOGIN_API : '**/login',
-  ALL_USERS_API : '**/users'
+  ALL_USERS_API : '**/users',
+  FAVORITE_API : '**/favorite'
 }

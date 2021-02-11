@@ -112,14 +112,21 @@ Cypress.Commands.add('favoriteArticle', (url) => {
   });
 });
 
-Cypress.Commands.add('unfavorite', (url) => {
-  getLoginToken(user).then((token) => {
-    cy.request({
-      method: 'DELETE',
-      url: `${apiUrl}/articles/${url}/favorite`,
-      headers: {
-        authorization: `Token ${token}`,
-      },
+Cypress.Commands.add('unfavorite', () => {
+  // pick up the 1st article's slug
+  cy.request('GET', `${apiUrl}/articles?limit=10&offset=0`).then((list) => {
+    expect(list.status).to.eq(200);
+    var slug = list.body.articles[0].slug;
+    console.log(slug) 
+    getLoginToken(user).then((token) => {
+      cy.request({
+        method: 'DELETE',
+        url: `${apiUrl}/articles/${slug}/favorite`,
+        headers: {
+          authorization: `Token ${token}`,
+        },
+      });
     });
+    return cy.wrap(slug).as('url')
   });
 });

@@ -37,28 +37,28 @@ const ArticlePreview = props => {
     <div className="article-preview" data-testid="TEST_ARTICLE_PREVIEW">
       <div className="article-meta">
         <Link to={`/@${article.author.username}`}>
-          <img src={article.author.image} alt={article.author.username} />
+          <img src={article.author.image} alt={article.author.username} data-testid="TEST_AUTHOR_IMG"/>
         </Link>
 
         <div className="info">
-          <Link className="author" to={`/@${article.author.username}`}>
+          <Link className="author" to={`/@${article.author.username}`} data-testid="TEST_AUTHOR">
             {article.author.username}
           </Link>
-          <span className="date">
+          <span className="date" data-testid="TEST_DATE">
             {new Date(article.createdAt).toDateString()}
           </span>
         </div>
 
         <div className="pull-xs-right">
-          <button className={favoriteButtonClass} onClick={handleClick}>
+          <button className={favoriteButtonClass} onClick={handleClick} data-testid="TEST_LIKE_BTN">
             <i className="ion-heart"></i> {article.favoritesCount}
           </button>
         </div>
       </div>
 
       <Link to={`/article/${article.slug}`} className="preview-link">
-        <h1 data-testid={`TEST_ARTICLE_${article.title.replace(" ","_")}`}>{article.title}</h1>
-        <p>{article.description}</p>
+        <h1 data-testid="TEST_ARTICLE_TITLE">{article.title}</h1>
+        <p data-testid="TEST_DESCRIPTION">{article.description}</p>
         <span>Read more...</span>
         <ul className="tag-list">
           {

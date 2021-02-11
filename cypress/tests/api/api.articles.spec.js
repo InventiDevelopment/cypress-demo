@@ -1,6 +1,6 @@
 /// <reference types="react-scripts" />
 
-import {Endpoints} from '../../support/constants/endpoints'
+import { Endpoints } from '../../support/constants/endpoints'
 
 const apiUrl = Cypress.env('apiUrl');
 const articlesApi = Endpoints.ARTICLES_API;
@@ -27,17 +27,13 @@ describe('Articles api tests', () => {
   // GIVEN I am logged user with a global list of articles
   // WHEN I pick up the arcicle AND add it to favorites
   // THEN I can see this article in the list of my favourites
-  //      and  it will have "favorite" index
+  // and  it will have "favorite" index
   it('[CD-T16] Add article to favorites', () => {
-    // pick up the 1st article's slug
-    cy.request('GET', `${apiUrl}/articles?limit=10&offset=0`).then((list) => {
-      expect(list.status).to.eq(200);
-      var slug = list.body.articles[0].slug;
+    // make sure the article is not my favorite
+    cy.unfavorite();
 
-      // make sure the article is not my favorite
-      cy.unfavorite(slug);
-
-      // call the first article api and remember a number of favorites
+    // call the first article api and remember a number of favorites
+    cy.get('@url').then((slug) => {
       cy.request('GET', `${apiUrl}/articles/${slug}`).then((article) => {
         expect(article.status).to.eq(200);
         var f1 = article.body.article.favoritesCount;
