@@ -30,7 +30,7 @@
   "experimentalComponentTesting": true,
   "componentFolder": "cypress/tests/component",
   "retries": {
-    "runMode": 0,
+    "runMode": 1,
     "openMode": 0
   }
 }

@@ -87,9 +87,9 @@ npm i
 ```python
 npm start # to build and run local app
 
-npm cypress:open # to run cypress in dubug mode and play with tets
-npm test:ci # to run tests in Chrome with in headless mode
-npm test:ci:mobile # to run tests in Chrome with moble viewport in headless mode 
+npm run cypress:open # to run cypress in dubug mode and play with tets
+npm run test:ci # to run tests in Chrome with in headless mode
+npm run test:ci:mobile # to run tests in Chrome with moble viewport in headless mode 
 test:ci:firefox # to run tests in Firefox in headless mode 
 ```
 
