@@ -11,8 +11,8 @@ We cover the application with couple of different types of tests. Our framework 
 
 We are also playing with Sorry Cypress dashboard to make our tests run in parallel and get nice reports including videos and screenshots. 
 
-Our tests are atomic, which means that each test tests only one part of the application in time. They are short, readable and easy maintable. Atomic tests also help to preven flackieness. 
-Our tests run independently, which means that we can run each test separately and it doesnt influence any other tests.  Our tests clean their data. That all makes it possible to run them paralelly. 
+Our tests are atomic, which means that each test tests only one part of the application in time. They are short, readable and easy maintable. Atomic tests also help to prevent flackieness. 
+Our tests run independently, which means that we can run each test separately and it doesn't influence any other tests.  Our tests clean their data. That all makes it possible to run them paralelly. 
 
 Test attributes are created by our team directly inside Frontend main repository. Mainly we use already existing id  or data-testid attributes to identify single HTML elements on the page. 
 
@@ -22,9 +22,7 @@ Test scenarios are written in GEVEN WHEN THEN format and are saved to [Jira] or 
 
 #### Example of integration test scenario:
 
-***GIVEN*** I am a not logged user
-
-***AND*** I land to the base page with articles
+***GIVEN*** I am a not logged user on the base page with articles
 
 ***WHEN*** my app gets no articles from server
 
@@ -38,8 +36,8 @@ For demo purposes we prepared different types of tests to show you what we can c
 ***API tests*** - better solution is to use some special framework like JEST. But Cypress can manage API tests in a really cool way too. We can test xhr requests, responces and schemas directly from Cypress
 ***Integration tests*** - tests based on mock data from fixure files allows you to test main app functionality with known data set. It is important to avoid flaky tests.
 ***E2E tests*** - regression/smoke - high power tests that cover your code in the most efficient way.
-***Security test*** - e2e regression tests that help to check your app from security point of view, e.g. app behaivior in offline mode or robot attack to input form test.
-***Visual regression tests*** - TBD - tests that are based on screenshots comparation with help of third party tool like Percy.io is. Tests can help you to be sure that design of your app or components is stable.
+***Security test*** - e2e regression tests that help to check your app from security point of view, e.q. app behaivior in offline mode or robot attack to input form test.
+***Visual regression tests*** - TBD - tests that are based on screenshots comparation with help of third party tool like Percy.io. Tests can help you to be sure that design of your app or components is stable.
 
 
 ## CI/CD
@@ -50,7 +48,7 @@ Run tests with destop viewport in Chrome
 Run tests with mobile viewport in Chrome
 Run tests with desktop viewport in Firefox
 
-Jobs are run in parallel. We can add more jobs with different configuration here.
+Jobs are running in parallel. We can add more jobs with different configuration here.
 
 We can also categorise our tests to be able to run only one special set of the tests on demand. For example [SMOKE], [SECURITY], [VISUAL]
 
@@ -87,10 +85,10 @@ npm i
 ```python
 npm start # to build and run local app
 
-npm cypress:open # to run cypress in dubug mode and play with tets
-npm test:ci # to run tests in Chrome with in headless mode
-npm test:ci:mobile # to run tests in Chrome with moble viewport in headless mode 
-test:ci:firefox # to run tests in Firefox in headless mode 
+npm run cypress:open # to run cypress in dubug mode and play with tets
+npm run test:ci # to run tests in Chrome with in headless mode
+npm run test:ci:mobile # to run tests in Chrome with moble viewport in headless mode 
+npm run test:ci:firefox # to run tests in Firefox in headless mode 
 ```
 
 ## Sorry cypress integration 
