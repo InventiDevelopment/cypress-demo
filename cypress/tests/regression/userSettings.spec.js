@@ -21,7 +21,7 @@ describe('Tests on settings page', () => {
   // GIVEN I am logged user on settings page
   // WHEN I loged in and I edit my settings
   // THEN I my settings are eddited and saved.
-  it('[CD-T9] Edit my biography [SMOKE]', () => {
+  it('[CD-T9] Edit my biography [SMOKE]', { retry: 1 }, () => {
     var text = randomString(10, '');
     cy.intercept('PUT', userApi).as('users');
     cy.intercept('GET', profileApi).as('profile');

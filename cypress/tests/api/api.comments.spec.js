@@ -11,7 +11,7 @@ describe('Comments api tests', () => {
   // THEN the article will have new comment
   // WHEN I get the list of comments and delete the last one
   // THEN the comment won't exist
-  it('[CD-T14] Add and delete comment', () => {
+  it('[CD-T14] Add and delete comment', { retry: 1 }, () => {
     // get the list of articles
     cy.request('GET', `${apiUrl}/articles?limit=10&offset=0`).then((list) => {
       expect(list.status).to.eq(200);

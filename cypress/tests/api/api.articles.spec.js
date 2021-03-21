@@ -28,7 +28,7 @@ describe('Articles api tests', () => {
   // WHEN I pick up the arcicle AND add it to favorites
   // THEN I can see this article in the list of my favourites
   //      and  it will have "favorite" index
-  it('[CD-T16] Add article to favorites', () => {
+  it('[CD-T16] Add article to favorites', { retry: 1 }, () => {
     // pick up the 1st article's slug
     cy.request('GET', `${apiUrl}/articles?limit=10&offset=0`).then((list) => {
       expect(list.status).to.eq(200);
