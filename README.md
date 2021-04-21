@@ -1,6 +1,6 @@
 # Cypress demo
 
-![Alt text](img/pyramid.png?raw=true "Cypress automation testing pyramid")
+![Alt text](img/newPyramid.png?raw=true "Cypress automation testing pyramid")
 
 Let me introduce you our Cypress Automation Framework for unit, component, integration, api and e2e regression tests we are inventing as a presentation of our automation skills. 
 Our framework is universal and easy configurable.
