@@ -42,6 +42,7 @@
     "unittest": "cross-env PORT=4100 react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open --env TEST_TAGS=CD",
+    "cy:dashboard": "cypress run --record --key e87e302c-09a5-4ed8-9359-104da453ecb6  -b chrome   -s 'cypress/tests/**/*.spec.js' --env TEST_TAGS=CD",
     "cy:run": "node cypress_runner -b chrome -m headless -s 'cypress/tests/**/*.spec.js'  --env TEST_TAGS=CD",
     "cy:run:mobile": "node cypress_runner -b chrome -m headless --config viewportWidth=375,viewportHeight=667 -s 'cypress/tests/**/*.spec.js'  --env TEST_TAGS=CD",
     "cy:run:firefox": "node cypress_runner -b firefox -m headless -s 'cypress/tests/**/*.spec.js' --env TEST_TAGS=CD",
